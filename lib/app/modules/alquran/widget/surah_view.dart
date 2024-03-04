@@ -25,51 +25,53 @@ class SurahView extends GetView<AlquranController> {
           );
         }
 
-        return ListView.builder(
-          itemCount: snapshot.data?.length,
-          itemBuilder: (context, index) {
-            Surah surah = snapshot.data![index];
-            return ListTile(
-              leading: Container(
-                height: 70,
-                width: 30,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/img/list.png'),
-                    fit: BoxFit.contain,
+        return Obx(
+          () => ListView.builder(
+            itemCount: controller.foundSurah.length,
+            itemBuilder: (context, index) {
+              Surah surah = controller.foundSurah[index];
+              return ListTile(
+                leading: Container(
+                  height: 70,
+                  width: 30,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/img/list.png'),
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                ),
-                child: Center(
-                  child: Text(
-                    '${index + 1}',
-                    style: const TextStyle(
-                      color: appBlack,
+                  child: Center(
+                    child: Text(
+                      '${surah.nomor}',
+                      style: const TextStyle(
+                        color: appBlack,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              title: Text(
-                '${surah.namaLatin}',
-                style: const TextStyle(
-                  color: appBlack,
+                title: Text(
+                  '${surah.namaLatin}',
+                  style: const TextStyle(
+                    color: appBlack,
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                '${surah.jumlahAyat} ayat | ${surah.tempatTurun == "mekah" ? "Makiyah" : "Madaniyah"}',
-                style: const TextStyle(
-                  color: appBlueLight1,
-                  fontSize: 14,
+                subtitle: Text(
+                  '${surah.jumlahAyat} ayat | ${surah.tempatTurun == "mekah" ? "Makiyah" : "Madaniyah"}',
+                  style: const TextStyle(
+                    color: appBlueLight1,
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-              trailing: const Text(
-                'الفاتحة',
-                style: TextStyle(
-                  color: appBlack,
-                  fontSize: 20,
+                trailing: Text(
+                  '${surah.nama}',
+                  style: const TextStyle(
+                    color: appBlack,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         );
       },
     );

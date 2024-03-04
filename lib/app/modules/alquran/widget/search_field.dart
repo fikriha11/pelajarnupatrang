@@ -10,6 +10,8 @@ class SearchField extends GetView<AlquranController> {
   @override
   Widget build(BuildContext context) {
     final SizeConfig sizeConfig = SizeConfig(context);
+    TextEditingController controllerField = TextEditingController();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
@@ -29,15 +31,9 @@ class SearchField extends GetView<AlquranController> {
                     // vertical: sizeConfig.getProportionateScreenHeight(5),
                     horizontal: sizeConfig.getProportionateScreenWidth(8)),
                 child: TextField(
-                  controller: controller.controllerField,
-                  onChanged: (String text) {
-                    controller.searchResult.clear();
-                    if (text.isEmpty) {
-                      return;
-                    }
-                    for (var element in controller.surahResult) {
-                      print(element);
-                    }
+                  controller: controllerField,
+                  onChanged: (value) {
+                    controller.filterSurah(value);
                   },
                   cursorColor: appBlueLight2,
                   decoration: const InputDecoration(

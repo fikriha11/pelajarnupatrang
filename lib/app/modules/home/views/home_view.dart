@@ -39,14 +39,14 @@ class HomeView extends GetView<HomeController> {
               const Text(
                 'Selamat Datang',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   color: appGrey,
                 ),
               ),
               const Text(
                 "Assalamu'alaikum",
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 20,
                   color: appBlack,
                   fontWeight: FontWeight.w500,
                 ),
