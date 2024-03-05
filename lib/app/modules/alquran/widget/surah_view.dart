@@ -33,7 +33,7 @@ class SurahView extends GetView<AlquranController> {
               Surah surah = controller.foundSurah[index];
               return InkWell(
                 onTap: () {
-                  Get.toNamed(Routes.DETAIL_SURAH);
+                  Get.toNamed(Routes.DETAIL_SURAH, arguments: surah);
                 },
                 child: ListTile(
                   leading: Container(
