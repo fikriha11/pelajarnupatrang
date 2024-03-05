@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pelajarnupatrang/app/constant/color.dart';
 
 import '../../../data/model/surah.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/alquran_controller.dart';
 
 class SurahView extends GetView<AlquranController> {
@@ -30,43 +31,48 @@ class SurahView extends GetView<AlquranController> {
             itemCount: controller.foundSurah.length,
             itemBuilder: (context, index) {
               Surah surah = controller.foundSurah[index];
-              return ListTile(
-                leading: Container(
-                  height: 70,
-                  width: 30,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/img/list.png'),
-                      fit: BoxFit.contain,
+              return InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.DETAIL_SURAH);
+                },
+                child: ListTile(
+                  leading: Container(
+                    height: 70,
+                    width: 30,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/img/list.png'),
+                        fit: BoxFit.contain,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '${surah.nomor}',
-                      style: const TextStyle(
-                        color: appBlack,
+                    child: Center(
+                      child: Text(
+                        '${surah.nomor}',
+                        style: const TextStyle(
+                          color: appBlack,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                title: Text(
-                  '${surah.namaLatin}',
-                  style: const TextStyle(
-                    color: appBlack,
+                  title: Text(
+                    '${surah.namaLatin}',
+                    style: const TextStyle(
+                      color: appBlack,
+                    ),
                   ),
-                ),
-                subtitle: Text(
-                  '${surah.jumlahAyat} ayat | ${surah.tempatTurun == "mekah" ? "Makiyah" : "Madaniyah"}',
-                  style: const TextStyle(
-                    color: appBlueLight1,
-                    fontSize: 14,
+                  subtitle: Text(
+                    '${surah.jumlahAyat} ayat | ${surah.tempatTurun}',
+                    style: const TextStyle(
+                      color: appBlueLight1,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  '${surah.nama}',
-                  style: const TextStyle(
-                    color: appBlack,
-                    fontSize: 20,
+                  trailing: Text(
+                    '${surah.nama}',
+                    style: const TextStyle(
+                      color: appBlack,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               );

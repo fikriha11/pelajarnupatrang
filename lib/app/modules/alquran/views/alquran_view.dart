@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:pelajarnupatrang/app/modules/alquran/widget/card_last_read.dart';
 import 'package:pelajarnupatrang/app/modules/alquran/widget/surah_view.dart';
 
 import '../../../constant/color.dart';

@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 
 import '../modules/alquran/bindings/alquran_binding.dart';
+import '../modules/alquran/bindings/detail_surah_binding.dart';
 import '../modules/alquran/views/alquran_view.dart';
+import '../modules/alquran/views/detail_surah_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/rotib/bindings/rotib_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.ROTIB,
       page: () => RotibView(),
       binding: RotibBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_SURAH,
+      page: () => const DetailSurahView(),
+      binding: DetailSurahBinding(),
     ),
   ];
 }
