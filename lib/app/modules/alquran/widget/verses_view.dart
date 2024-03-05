@@ -15,7 +15,6 @@ class VersesView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: sizeConfig.getProportionateScreenWidth(15),
-        vertical: sizeConfig.getProportionateScreenHeight(5),
       ),
       child: Column(
         children: [

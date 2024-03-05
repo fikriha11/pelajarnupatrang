@@ -40,34 +40,46 @@ class DetailSurahView extends GetView<DetailSurahController> {
 
           return Column(
             children: [
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: sizeConfig.getProportionateScreenWidth(10),
+                  right: sizeConfig.getProportionateScreenWidth(10),
+                  top: sizeConfig.getProportionateScreenHeight(10),
                 ),
-                tileColor: Colors.blue.shade300,
-                title: Text(
-                  '${snapshot.data!.namaLatin}',
-                  style: const TextStyle(
-                    color: appWhite,
+                child: ListTile(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                ),
-                subtitle: Text(
-                  '${snapshot.data!.jumlahAyat} Ayat | ${snapshot.data!.tempatTurun}',
-                  style: const TextStyle(
-                    color: appWhite,
+                  tileColor: Colors.blue.shade300,
+                  title: Text(
+                    '${snapshot.data!.namaLatin}',
+                    style: const TextStyle(
+                      color: appWhite,
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  '${snapshot.data!.nama}',
-                  style: const TextStyle(fontSize: 30, color: appWhite),
+                  subtitle: Text(
+                    '${snapshot.data!.jumlahAyat} Ayat | ${snapshot.data!.tempatTurun}',
+                    style: const TextStyle(
+                      color: appWhite,
+                    ),
+                  ),
+                  trailing: Text(
+                    '${snapshot.data!.nama}',
+                    style: const TextStyle(fontSize: 30, color: appWhite),
+                  ),
                 ),
               ),
               Expanded(
                 child: ListView.builder(
                   itemCount: snapshot.data!.ayat!.length,
                   itemBuilder: (context, index) {
-                    return VersesView(
-                      ayatDetail: snapshot.data!.ayat![index],
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: sizeConfig.getProportionateScreenHeight(15),
+                      ),
+                      child: VersesView(
+                        ayatDetail: snapshot.data!.ayat![index],
+                      ),
                     );
                   },
                 ),
