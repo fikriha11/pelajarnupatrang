@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pelajarnupatrang/app/data/model/detail_surah.dart';
-import 'package:pelajarnupatrang/app/modules/alquran/widget/verses_view.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:quran/quran.dart' as quran;
+
 import '../../../constant/color.dart';
 import '../../../constant/size_config.dart';
+import '../../../data/model/detail_surah.dart';
 import '../../../data/model/surah.dart';
 import '../controllers/detail_surah_controller.dart';
+import '../widget/verses_view.dart';
 
 class DetailSurahView extends GetView<DetailSurahController> {
   DetailSurahView({Key? key}) : super(key: key);
@@ -41,10 +44,9 @@ class DetailSurahView extends GetView<DetailSurahController> {
           return Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                  left: sizeConfig.getProportionateScreenWidth(10),
-                  right: sizeConfig.getProportionateScreenWidth(10),
-                  top: sizeConfig.getProportionateScreenHeight(10),
+                padding: EdgeInsets.symmetric(
+                  horizontal: sizeConfig.getProportionateScreenWidth(10),
+                  vertical: sizeConfig.getProportionateScreenHeight(10),
                 ),
                 child: ListTile(
                   shape: RoundedRectangleBorder(
@@ -65,7 +67,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                   ),
                   trailing: Text(
                     '${snapshot.data!.nama}',
-                    style: const TextStyle(fontSize: 30, color: appWhite),
+                    style: GoogleFonts.lateef(fontSize: 40, color: appWhite),
                   ),
                 ),
               ),
@@ -75,10 +77,14 @@ class DetailSurahView extends GetView<DetailSurahController> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: sizeConfig.getProportionateScreenHeight(15),
+                        vertical: sizeConfig.getProportionateScreenHeight(5),
                       ),
                       child: VersesView(
-                        ayatDetail: snapshot.data!.ayat![index],
+                        translation: snapshot.data!.ayat![index],
+                        verses: quran.getVerse(
+                          surah.nomor!.toInt(),
+                          index + 1,
+                        ),
                       ),
                     );
                   },

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constant/color.dart';
 import '../../../constant/size_config.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../../../data/model/detail_surah.dart';
 
 class VersesView extends StatelessWidget {
-  const VersesView({super.key, required this.ayatDetail});
-  final Ayat ayatDetail;
+  const VersesView(
+      {super.key, required this.translation, required this.verses});
+  final Ayat translation;
+  final String verses;
   @override
   Widget build(BuildContext context) {
     final SizeConfig sizeConfig = SizeConfig(context);
@@ -22,9 +23,10 @@ class VersesView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: sizeConfig.getProportionateScreenWidth(70),
+                height: sizeConfig.getProportionateScreenWidth(30),
                 width: sizeConfig.getProportionateScreenHeight(30),
                 decoration: const BoxDecoration(
+                  // color: Colors.black,
                   image: DecorationImage(
                     image: AssetImage('assets/img/list.png'),
                     fit: BoxFit.contain,
@@ -32,7 +34,7 @@ class VersesView extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '${ayatDetail.nomor}',
+                    '${translation.nomor}',
                     style: const TextStyle(
                       color: appBlack,
                     ),
@@ -47,25 +49,25 @@ class VersesView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '${ayatDetail.ar}',
+                      // '${ayatDetail.ar}',
+                      verses,
                       textAlign: TextAlign.end,
-                      style: GoogleFonts.amiriQuran(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.amiri(
+                        fontSize: 25,
                         wordSpacing: 2.0,
-                        height: 2.0,
+                        height: 2.7,
                       ),
                     ),
                     SizedBox(
-                      height: sizeConfig.getProportionateScreenHeight(15),
+                      height: sizeConfig.getProportionateScreenHeight(30),
                     ),
                     Row(
                       children: [
                         Expanded(
                           child: Text(
-                            "${ayatDetail.idn}",
+                            "${translation.idn}",
                             style: const TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                             ),
                             textAlign: TextAlign.start,
                           ),
