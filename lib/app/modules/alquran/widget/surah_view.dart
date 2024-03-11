@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pelajarnupatrang/app/constant/color.dart';
 
 import '../../../data/model/surah.dart';
@@ -70,9 +69,10 @@ class SurahView extends GetView<AlquranController> {
                   ),
                   trailing: Text(
                     '${surah.nama}',
-                    style: GoogleFonts.lateef(
+                    style: const TextStyle(
+                      fontFamily: 'Lpmq',
                       color: appBlack,
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                 ),

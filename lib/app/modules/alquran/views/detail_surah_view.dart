@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:quran/quran.dart' as quran;
 
 import '../../../constant/color.dart';
 import '../../../constant/size_config.dart';
 import '../../../data/model/detail_surah.dart';
 import '../../../data/model/surah.dart';
 import '../controllers/detail_surah_controller.dart';
+import '../widget/basmalah.dart';
 import '../widget/verses_view.dart';
 
 class DetailSurahView extends GetView<DetailSurahController> {
@@ -60,14 +59,15 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     ),
                   ),
                   subtitle: Text(
-                    '${snapshot.data!.jumlahAyat} Ayat | ${snapshot.data!.tempatTurun}',
+                    '${snapshot.data!.nomor} Ayat | ${snapshot.data!.tempatTurun}',
                     style: const TextStyle(
                       color: appWhite,
                     ),
                   ),
                   trailing: Text(
                     '${snapshot.data!.nama}',
-                    style: GoogleFonts.lateef(fontSize: 40, color: appWhite),
+                    style: const TextStyle(
+                        fontFamily: 'Lpmq', fontSize: 40, color: appWhite),
                   ),
                 ),
               ),
@@ -75,17 +75,23 @@ class DetailSurahView extends GetView<DetailSurahController> {
                 child: ListView.builder(
                   itemCount: snapshot.data!.ayat!.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: sizeConfig.getProportionateScreenHeight(5),
-                      ),
-                      child: VersesView(
-                        translation: snapshot.data!.ayat![index],
-                        verses: quran.getVerse(
-                          surah.nomor!.toInt(),
-                          index + 1,
+                    return Column(
+                      children: [
+                        index == 0
+                            ? BasmalahVerses(
+                                nomor: surah.nomor!.toInt(),
+                              )
+                            : Container(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical:
+                                sizeConfig.getProportionateScreenHeight(5),
+                          ),
+                          child: VersesView(
+                            ayat: snapshot.data!.ayat![index],
+                          ),
                         ),
-                      ),
+                      ],
                     );
                   },
                 ),

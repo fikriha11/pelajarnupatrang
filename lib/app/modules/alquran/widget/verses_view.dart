@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 import '../../../constant/color.dart';
 import '../../../constant/size_config.dart';
 import '../../../data/model/detail_surah.dart';
+import '../controllers/detail_surah_controller.dart';
 
-class VersesView extends StatelessWidget {
-  const VersesView(
-      {super.key, required this.translation, required this.verses});
-  final Ayat translation;
-  final String verses;
+class VersesView extends GetView<DetailSurahController> {
+  const VersesView({super.key, required this.ayat});
+  final Ayat ayat;
   @override
   Widget build(BuildContext context) {
     final SizeConfig sizeConfig = SizeConfig(context);
@@ -34,7 +33,7 @@ class VersesView extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '${translation.nomor}',
+                    '${ayat.nomor}',
                     style: const TextStyle(
                       color: appBlack,
                     ),
@@ -48,14 +47,17 @@ class VersesView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      // '${ayatDetail.ar}',
-                      verses,
-                      textAlign: TextAlign.end,
-                      style: GoogleFonts.amiri(
-                        fontSize: 25,
-                        wordSpacing: 2.0,
-                        height: 2.7,
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Text(
+                        '${ayat.ar}',
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'Lpmq',
+                          wordSpacing: 2.0,
+                          height: 2.3,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -65,7 +67,7 @@ class VersesView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            "${translation.idn}",
+                            "${ayat.idn}",
                             style: const TextStyle(
                               fontSize: 13,
                             ),
