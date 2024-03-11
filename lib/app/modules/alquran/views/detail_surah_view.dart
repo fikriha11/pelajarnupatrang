@@ -82,14 +82,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                                 nomor: surah.nomor!.toInt(),
                               )
                             : Container(),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical:
-                                sizeConfig.getProportionateScreenHeight(5),
-                          ),
-                          child: VersesView(
-                            ayat: snapshot.data!.ayat![index],
-                          ),
+                        VersesView(
+                          ayat: snapshot.data!.ayat![index],
                         ),
                       ],
                     );
