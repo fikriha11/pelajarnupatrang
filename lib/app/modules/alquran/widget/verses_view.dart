@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pelajarnupatrang/app/modules/alquran/widget/modal_verses.dart';
 import 'package:quran/quran.dart' as quran;
 
 import '../../../constant/color.dart';
@@ -27,7 +28,10 @@ class VersesView extends GetView<DetailSurahController> {
             children: [
               IconButton(
                 color: appBlack,
-                onPressed: () {},
+                onPressed: () {
+                  ModalVerses modalVerses = ModalVerses();
+                  modalVerses.show(context);
+                },
                 icon: const Icon(Icons.more_vert),
               ),
               Expanded(
