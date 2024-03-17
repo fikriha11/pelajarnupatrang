@@ -7,7 +7,7 @@ import '../../../data/model/detail_surah.dart';
 import '../../../data/model/surah.dart';
 import '../controllers/detail_surah_controller.dart';
 import '../widget/basmalah.dart';
-import '../widget/verses_view.dart';
+import '../widget/verses.dart';
 
 class DetailSurahView extends GetView<DetailSurahController> {
   DetailSurahView({Key? key}) : super(key: key);
@@ -67,7 +67,10 @@ class DetailSurahView extends GetView<DetailSurahController> {
                   trailing: Text(
                     '${snapshot.data!.nama}',
                     style: const TextStyle(
-                        fontFamily: 'Lpmq', fontSize: 40, color: appWhite),
+                      fontFamily: 'Lpmq',
+                      fontSize: 40,
+                      color: appWhite,
+                    ),
                   ),
                 ),
               ),
@@ -84,6 +87,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                             : Container(),
                         VersesView(
                           ayat: snapshot.data!.ayat![index],
+                          detailSurah: snapshot.data!,
+                          index: index,
                         ),
                       ],
                     );

@@ -6,8 +6,8 @@ import '../../../data/model/surah.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/alquran_controller.dart';
 
-class SurahView extends GetView<AlquranController> {
-  const SurahView({super.key});
+class SurahLayout extends GetView<AlquranController> {
+  const SurahLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,12 +2,16 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:pelajarnupatrang/app/data/db/bookmark.dart';
+import 'package:pelajarnupatrang/app/data/model/bookmark.dart';
 import 'package:pelajarnupatrang/app/data/remote/end_point.dart';
+import 'package:sqflite/sqflite.dart';
 import '../../../data/model/surah.dart';
 
 class AlquranController extends GetxController {
   RxList<Surah> foundSurah = <Surah>[].obs;
   List<Surah> allSurah = [];
+  DatabaseManager databaseManager = DatabaseManager.instance;
 
   Future<List<Surah>> getAllSurah() async {
     Uri url = Uri.parse('${EndPoint.baseUrl}${EndPoint.surah}');
@@ -38,5 +42,24 @@ class AlquranController extends GetxController {
           .toList();
     }
     foundSurah.value = result;
+  }
+
+  Future<List> getAllBookmark() async {
+    Database db = await databaseManager.db;
+
+    List dataQuery = await db.query(
+      'bookmark',
+      where: 'lastRead = 0',
+    );
+
+    return dataQuery;
+  }
+
+  void deleteBookmark(int id) async {
+    Database db = await databaseManager.db;
+    await db.delete(
+      'bookmark',
+      where: 'id=$id',
+    );
   }
 }

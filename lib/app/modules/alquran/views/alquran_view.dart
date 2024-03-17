@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:pelajarnupatrang/app/modules/alquran/widget/surah_view.dart';
+import 'package:pelajarnupatrang/app/modules/alquran/layout/bookmark_layout.dart';
+import 'package:pelajarnupatrang/app/modules/alquran/layout/surah_layout.dart';
 
 import '../../../constant/color.dart';
 import '../../../constant/size_config.dart';
@@ -89,10 +90,8 @@ class AlquranView extends GetView<AlquranController> {
                 const Expanded(
                     child: TabBarView(
                   children: [
-                    SurahView(),
-                    Center(
-                      child: Text('BOOKMARK'),
-                    )
+                    SurahLayout(),
+                    BookmarkLayout(),
                   ],
                 ))
               ],

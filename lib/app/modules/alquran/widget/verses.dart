@@ -10,8 +10,15 @@ import '../../../data/model/detail_surah.dart';
 import '../controllers/detail_surah_controller.dart';
 
 class VersesView extends GetView<DetailSurahController> {
-  const VersesView({super.key, required this.ayat});
+  const VersesView({
+    super.key,
+    required this.ayat,
+    required this.detailSurah,
+    required this.index,
+  });
   final Ayat ayat;
+  final DetailSurah detailSurah;
+  final int index;
   @override
   Widget build(BuildContext context) {
     final SizeConfig sizeConfig = SizeConfig(context);
@@ -30,7 +37,7 @@ class VersesView extends GetView<DetailSurahController> {
                 color: appBlack,
                 onPressed: () {
                   ModalVerses modalVerses = ModalVerses();
-                  modalVerses.show(context);
+                  modalVerses.show(context, detailSurah, ayat, index);
                 },
                 icon: const Icon(Icons.more_vert),
               ),
